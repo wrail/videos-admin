@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="videos-admin-pojo" />
+        <module name="videos-admin-web" />
+        <module name="videos-admin-common" />
+        <module name="videos-admin-mapper" />
+        <module name="videos-admin-service" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>
