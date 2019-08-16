@@ -1,7 +1,7 @@
 package com.wrial.mapper;
 
-import com.imooc.pojo.Videos;
-import com.imooc.pojo.VideosExample;
+import com.wrial.pojo.Videos;
+import com.wrial.pojo.VideosExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

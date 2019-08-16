@@ -1,7 +1,7 @@
 package com.wrial.mapper;
 
-import com.imooc.pojo.Bgm;
-import com.imooc.pojo.BgmExample;
+import com.wrial.pojo.Bgm;
+import com.wrial.pojo.BgmExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

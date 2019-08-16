@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.imooc.mapper.UsersMapper" >
-  <resultMap id="BaseResultMap" type="com.imooc.pojo.Users" >
+<mapper namespace="com.wrial.mapper.UsersMapper" >
+  <resultMap id="BaseResultMap" type="com.wrial.pojo.Users" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
@@ -72,7 +72,7 @@
   <sql id="Base_Column_List" >
     id, username, password, face_image, nickname, fans_counts, follow_counts, receive_like_counts
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.imooc.pojo.UsersExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wrial.pojo.UsersExample" >
     select
     <if test="distinct" >
       distinct
@@ -96,13 +96,13 @@
     delete from users
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.imooc.pojo.UsersExample" >
+  <delete id="deleteByExample" parameterType="com.wrial.pojo.UsersExample" >
     delete from users
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.imooc.pojo.Users" >
+  <insert id="insert" parameterType="com.wrial.pojo.Users" >
     insert into users (id, username, password, 
       face_image, nickname, fans_counts, 
       follow_counts, receive_like_counts)
@@ -110,7 +110,7 @@
       #{faceImage,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{fansCounts,jdbcType=INTEGER}, 
       #{followCounts,jdbcType=INTEGER}, #{receiveLikeCounts,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.imooc.pojo.Users" >
+  <insert id="insertSelective" parameterType="com.wrial.pojo.Users" >
     insert into users
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -165,7 +165,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.imooc.pojo.UsersExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.wrial.pojo.UsersExample" resultType="java.lang.Integer" >
     select count(*) from users
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -217,7 +217,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.imooc.pojo.Users" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.wrial.pojo.Users" >
     update users
     <set >
       <if test="username != null" >
@@ -244,7 +244,7 @@
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.imooc.pojo.Users" >
+  <update id="updateByPrimaryKey" parameterType="com.wrial.pojo.Users" >
     update users
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},

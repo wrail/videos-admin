@@ -1,7 +1,7 @@
 package com.wrial.mapper;
 
-import com.imooc.pojo.Users;
-import com.imooc.pojo.UsersExample;
+import com.wrial.pojo.Users;
+import com.wrial.pojo.UsersExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

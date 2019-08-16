@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.imooc.mapper.UsersReportMapper" >
-  <resultMap id="BaseResultMap" type="com.imooc.pojo.UsersReport" >
+<mapper namespace="com.wrial.mapper.UsersReportMapper" >
+  <resultMap id="BaseResultMap" type="com.wrial.pojo.UsersReport" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="deal_user_id" property="dealUserId" jdbcType="VARCHAR" />
     <result column="deal_video_id" property="dealVideoId" jdbcType="VARCHAR" />
@@ -71,7 +71,7 @@
   <sql id="Base_Column_List" >
     id, deal_user_id, deal_video_id, title, content, userid, create_date
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.imooc.pojo.UsersReportExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wrial.pojo.UsersReportExample" >
     select
     <if test="distinct" >
       distinct
@@ -95,13 +95,13 @@
     delete from users_report
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.imooc.pojo.UsersReportExample" >
+  <delete id="deleteByExample" parameterType="com.wrial.pojo.UsersReportExample" >
     delete from users_report
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.imooc.pojo.UsersReport" >
+  <insert id="insert" parameterType="com.wrial.pojo.UsersReport" >
     insert into users_report (id, deal_user_id, deal_video_id, 
       title, content, userid, 
       create_date)
@@ -109,7 +109,7 @@
       #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, 
       #{createDate,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.imooc.pojo.UsersReport" >
+  <insert id="insertSelective" parameterType="com.wrial.pojo.UsersReport" >
     insert into users_report
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -158,7 +158,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.imooc.pojo.UsersReportExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.wrial.pojo.UsersReportExample" resultType="java.lang.Integer" >
     select count(*) from users_report
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -206,7 +206,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.imooc.pojo.UsersReport" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.wrial.pojo.UsersReport" >
     update users_report
     <set >
       <if test="dealUserId != null" >
@@ -230,7 +230,7 @@
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.imooc.pojo.UsersReport" >
+  <update id="updateByPrimaryKey" parameterType="com.wrial.pojo.UsersReport" >
     update users_report
     set deal_user_id = #{dealUserId,jdbcType=VARCHAR},
       deal_video_id = #{dealVideoId,jdbcType=VARCHAR},

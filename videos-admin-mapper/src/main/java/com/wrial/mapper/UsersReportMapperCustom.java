@@ -1,6 +1,7 @@
 package com.wrial.mapper;
 
-import com.imooc.pojo.vo.Reports;
+
+import com.wrial.pojo.vo.Reports;
 
 import java.util.List;
 
