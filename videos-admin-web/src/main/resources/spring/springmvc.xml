@@ -29,19 +29,19 @@
 	</bean>
 	
 	<!-- 拦截器 -->
-<!--   <mvc:interceptors>-->
-<!--        <mvc:interceptor>-->
-<!--            <mvc:mapping path="/*/**"/>-->
-<!--            <mvc:exclude-mapping path="/static/**"/>  -->
-<!--            <bean class="com.wrial.interceptor.LoginInterceptor">-->
-<!--               <property name="unCheckUrls"> -->
-<!--                  <list> -->
-<!--					<value>/users/login.action</value>-->
-<!--                  </list> -->
-<!--              </property> -->
-<!--            </bean>-->
-<!--        </mvc:interceptor>-->
-<!--    </mvc:interceptors>-->
+   <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/*/**"/>
+            <mvc:exclude-mapping path="/static/**"/>
+            <bean class="com.wrial.interceptor.LoginInterceptor">
+               <property name="unCheckUrls">
+                  <list>
+					<value>/users/login.action</value>
+                  </list>
+              </property>
+            </bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 	
 	<!-- 配置多媒体文件解析器 -->
 	<bean id="multipartResolver"
