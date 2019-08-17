@@ -4,9 +4,12 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.wrial.ZKUtil.ZKCurator;
 import com.wrial.mapper.BgmMapper;
+import com.wrial.mapper.UsersReportMapperCustom;
 import com.wrial.mapper.VideosMapper;
 import com.wrial.pojo.Bgm;
 import com.wrial.pojo.BgmExample;
+import com.wrial.pojo.Videos;
+import com.wrial.pojo.vo.Reports;
 import com.wrial.service.VideoService;
 import com.wrial.utils.JsonUtils;
 import com.wrial.utils.PagedResult;
@@ -33,6 +36,9 @@ public class VideoServiceImpl implements VideoService {
 
     @Autowired
     private ZKCurator zkCurator;
+
+    @Autowired
+    private UsersReportMapperCustom usersReportMapperCustom;
 
     /*
     为什么使用Map呢？
@@ -84,4 +90,38 @@ public class VideoServiceImpl implements VideoService {
         bgmMapper.deleteByPrimaryKey(id);
 
     }
+
+    /*
+    禁播状态管理
+     */
+    @Override
+    public void updateVideoStatus(String videoId, Integer status) {
+
+        Videos video = new Videos();
+        video.setId(videoId);
+        video.setStatus(status);
+        videosMapper.updateByPrimaryKeySelective(video);
+    }
+
+    /*
+    查询举报列表
+     */
+    @Override
+    public PagedResult queryReportList(Integer page, int pageSize) {
+
+        PageHelper.startPage(page, pageSize);
+
+        List<Reports> reportsList = usersReportMapperCustom.selectAllVideoReport();
+
+        PageInfo<Reports> pageList = new PageInfo<Reports>(reportsList);
+
+        PagedResult grid = new PagedResult();
+        grid.setTotal(pageList.getPages());
+        grid.setRows(reportsList);
+        grid.setPage(page);
+        grid.setRecords(pageList.getTotal());
+
+        return grid;
+    }
+
 }

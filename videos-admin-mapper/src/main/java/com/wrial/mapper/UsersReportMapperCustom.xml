@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.wrial.mapper.UsersReportMapperCustom" >
-		
-	<select id="selectAllVideoReport" resultType="com.wrial.pojo.vo.Reports" >
+<mapper namespace="com.wrial.mapper.UsersReportMapperCustom">
+
+    <!-- 查询举报列表信息-->
+    <select id="selectAllVideoReport" resultType="com.wrial.pojo.vo.Reports">
 	    select 
 	    	ur.id as id,
 	    	ur.title as title,

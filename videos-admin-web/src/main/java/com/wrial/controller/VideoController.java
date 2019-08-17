@@ -4,6 +4,7 @@ import com.wrial.pojo.Bgm;
 import com.wrial.service.VideoService;
 import com.wrial.utils.MyJSONResult;
 import com.wrial.utils.PagedResult;
+import enums.VideoStatusEnum;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -112,6 +113,27 @@ public class VideoController {
     @ResponseBody
     public MyJSONResult delBgm(String bgmId) {
         videoService.deleteBgm(bgmId);
+        return MyJSONResult.ok();
+    }
+
+    @GetMapping("/showReportList")
+    public String showReportList() {
+        return "video/reportList";
+    }
+
+    @PostMapping("/reportList")
+    @ResponseBody
+    public PagedResult reportList(Integer page) {
+
+        PagedResult result = videoService.queryReportList(page, 10);
+        return result;
+    }
+
+    @PostMapping("/forbidVideo")
+    @ResponseBody
+    public MyJSONResult forbidVideo(String videoId) {
+
+        videoService.updateVideoStatus(videoId, VideoStatusEnum.FORBID.value);
         return MyJSONResult.ok();
     }
 
