@@ -24,17 +24,15 @@
 	<!-- 创建zookeeper客户端 -->
 	<bean id="client" class="org.apache.curator.framework.CuratorFrameworkFactory" 
 		factory-method="newClient" init-method="start">
-		<constructor-arg index="0" value="192.168.1.210:2181"></constructor-arg>
+		<constructor-arg index="0" value="127.0.0.1:2181"></constructor-arg>
 		<constructor-arg index="1" value="10000"></constructor-arg>
 		<constructor-arg index="2" value="10000"></constructor-arg>
 		<constructor-arg index="3" ref="retryPolicy"></constructor-arg>
 	</bean>
 	
 	<!-- 客户端配置 -->
-	<!-- init-method="init" 不使用zk的话，仅仅只是测试为了方便可以把这个方法暂时拿掉 -->
-<!--	<bean id="ZKCurator" class="" init-method="init">-->
-<!--		<constructor-arg index="0" ref="client"></constructor-arg>-->
-<!--	</bean>-->
-<!--	-->
-	
+<!--	 init-method="init" 不使用zk的话，仅仅只是测试为了方便可以把这个方法暂时拿掉-->
+	<bean id="ZKCurator" class="com.wrial.ZKUtil.ZKCurator" init-method="init">
+		<constructor-arg index="0" ref="client"></constructor-arg>
+	</bean>
 </beans>

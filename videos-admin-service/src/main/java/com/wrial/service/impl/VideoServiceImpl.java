@@ -2,19 +2,19 @@ package com.wrial.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.wrial.ZKUtil.ZKCurator;
 import com.wrial.mapper.BgmMapper;
 import com.wrial.mapper.VideosMapper;
 import com.wrial.pojo.Bgm;
 import com.wrial.pojo.BgmExample;
 import com.wrial.service.VideoService;
 import com.wrial.utils.PagedResult;
+import enums.BGMOperatorTypeEnum;
 import org.n3r.idwroker.Sid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class VideoServiceImpl implements VideoService {
@@ -28,11 +28,16 @@ public class VideoServiceImpl implements VideoService {
     @Autowired
     private Sid sid;
 
+    @Autowired
+    private ZKCurator zkCurator;
+
     @Override
     public void addBgm(Bgm bgm) {
         String bgmId = sid.nextShort();
         bgm.setId(bgmId);
         bgmMapper.insert(bgm);
+        zkCurator.init();
+        zkCurator.sendBgmOperator(bgmId, BGMOperatorTypeEnum.ADD.value);
     }
 
     @Override

@@ -11,7 +11,8 @@ var deleteBgm = function(bgmId) {
 		success: function(data) {
 			if (data.status == 200 && data.msg == 'OK') {
 				alert('删除成功~~');
-				var jqGrid = $("#bgmList");  
+				var jqGrid = $("#bgmList");
+				//删除完后刷新
 				jqGrid.jqGrid().trigger("reloadGrid");
 			}
 		}
