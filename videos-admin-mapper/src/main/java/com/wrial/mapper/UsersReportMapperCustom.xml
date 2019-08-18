@@ -19,7 +19,7 @@
 		 	left join users du on ur.deal_user_id = du.id 
 		 	left join videos v on ur.deal_video_id = v.id 
 			left join users u on ur.userid=u.id
-		group by ur.create_date desc
+		order by ur.create_date desc
 	</select>
 
 </mapper>
